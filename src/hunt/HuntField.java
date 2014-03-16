@@ -19,7 +19,6 @@ public class HuntField {
     public int getYLength() {
         return columns;
     }
-//???
 
     public synchronized boolean setItem(FieldItem I, Position pos) {
         if (pos.getX() >= rows || pos.getX() < 0 || pos.getY() <= columns || pos.getY() < 0) {
@@ -120,9 +119,14 @@ public class HuntField {
     @Override
     public synchronized String toString() {
         String str = "";
+        char type;
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                str += hunt[i][j].getType();
+                if (hunt[i][j] != null) {
+                    str += hunt[i][j].getType();
+                } else {
+                    str += ' ';
+                }
             }
             str += '\n';
         }
